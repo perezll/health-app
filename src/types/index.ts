@@ -43,3 +43,11 @@ export type ArticleProps = {
   primaryMessage: string;
   secondaryMessage: string;
 };
+
+export type MenuLinkProps = {
+  message: string;
+};
+
+export type MenuProps = {
+  closeMenu: () => void;
+};

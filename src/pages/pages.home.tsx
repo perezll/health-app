@@ -12,6 +12,8 @@ import img5 from "../assets/images/l02.jpg";
 
 import { Button } from "@atoms/buttons";
 import { HomeGridPhotoProps } from "@types";
+import { BackOnTopIcon } from "@atoms/icons";
+import { useEffect, useState } from "react";
 
 const gridItems: HomeGridPhotoProps[] = [
   {
@@ -49,38 +51,67 @@ const gridItems: HomeGridPhotoProps[] = [
 ];
 
 export const Home: React.FC = () => {
+  const [showScroll, setShowScroll] = useState<boolean>(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 400) {
+        setShowScroll(true);
+      } else {
+        setShowScroll(false);
+      }
+    });
+  }, []);
+
+  const goToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
       <Container>
-        <div className="relative w-full h-312px flex overflow-hidden">
-          <div className="relative z-0">
-            <div className="absolute z-10 w-full h-full flex items-center justify-center">
-              <PhotoMainText />
+        <div className="relative">
+          {showScroll && (
+            <div
+              onClick={() => goToTop()}
+              className="fixed z-30 right-16 bottom-2/4 hover:cursor-pointer"
+            >
+              <BackOnTopIcon />
             </div>
-            <img src={food} alt="food" className="object-cover" />
-          </div>
-          <div className="bg-dark-600 w-8/12">
-            <div className="flex items-center  h-full  justify-center">
-              <PhotoGraph />
+          )}
+          <div className="relative w-full h-312px flex overflow-hidden">
+            <div className="relative z-0">
+              <div className="absolute z-10 w-full h-full flex items-center justify-center">
+                <PhotoMainText />
+              </div>
+              <img src={food} alt="food" className="object-cover" />
+            </div>
+            <div className="bg-dark-600 w-8/12">
+              <div className="flex items-center  h-full  justify-center">
+                <PhotoGraph />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="mx-40">
-          <HexagonMenu />
-          <div className="grid grid-cols-4 gap-2">
-            {gridItems.map((item, index) => (
-              <HomeGridPhoto
-                key={index}
-                img={item.img}
-                message={item.message}
+          <div className="mx-40">
+            <HexagonMenu />
+            <div className="grid grid-cols-4 gap-2">
+              {gridItems.map((item, index) => (
+                <HomeGridPhoto
+                  key={index}
+                  img={item.img}
+                  message={item.message}
+                />
+              ))}
+            </div>
+            <div className="flex items-center justify-center my-9">
+              <Button
+                message="記録をもっと見る"
+                onClick={() => alert("Clicked")}
               />
-            ))}
-          </div>
-          <div className="flex items-center justify-center my-9">
-            <Button
-              message="記録をもっと見る"
-              onClick={() => alert("Clicked")}
-            />
+            </div>
           </div>
         </div>
       </Container>

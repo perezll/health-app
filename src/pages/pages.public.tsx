@@ -11,6 +11,8 @@ import img6 from "../assets/images/column-6.jpg";
 import img7 from "../assets/images/column-7.jpg";
 import img8 from "../assets/images/column-8.jpg";
 import { Button } from "@atoms/buttons";
+import { useEffect, useState } from "react";
+import { BackOnTopIcon } from "@atoms/icons";
 
 const articles: ArticleProps[] = [
   {
@@ -72,29 +74,58 @@ const articles: ArticleProps[] = [
 ];
 
 export const Public: React.FC = () => {
+  const [showScroll, setShowScroll] = useState<boolean>(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 400) {
+        setShowScroll(true);
+      } else {
+        setShowScroll(false);
+      }
+    });
+  }, []);
+
+  const goToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
       <Container>
-        <div className="mx-40">
-          <div className="mt-16">
-            <Section1 />
-          </div>
-          <div className="mt-16 grid grid-cols-4 gap-2">
-            {articles.map((item, index) => (
-              <Section2
-                key={index}
-                date={item.date}
-                img={item.img}
-                primaryMessage={item.primaryMessage}
-                secondaryMessage={item.secondaryMessage}
+        <div className="relative">
+          {showScroll && (
+            <div
+              onClick={() => goToTop()}
+              className="fixed z-30 right-16 bottom-2/4 hover:cursor-pointer"
+            >
+              <BackOnTopIcon />
+            </div>
+          )}
+          <div className="mx-40">
+            <div className="mt-16">
+              <Section1 />
+            </div>
+            <div className="mt-16 grid grid-cols-4 gap-x-2 gap-y-8">
+              {articles.map((item, index) => (
+                <Section2
+                  key={index}
+                  date={item.date}
+                  img={item.img}
+                  primaryMessage={item.primaryMessage}
+                  secondaryMessage={item.secondaryMessage}
+                />
+              ))}
+            </div>
+            <div className="flex items-center justify-center my-9 ">
+              <Button
+                message="コラムをもっと見る"
+                onClick={() => alert("Clicked")}
               />
-            ))}
-          </div>
-          <div className="flex items-center justify-center my-9 ">
-            <Button
-              message="コラムをもっと見る"
-              onClick={() => alert("Clicked")}
-            />
+            </div>
           </div>
         </div>
       </Container>

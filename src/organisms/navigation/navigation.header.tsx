@@ -2,8 +2,16 @@ import { Link, Outlet } from "react-router-dom";
 import { MainLogo } from "@atoms/logo";
 import { NavigationMemo } from "@molecules/navigation";
 import { HamburgerIcon, PaperIcon, RibbonIcon, InfoIcon } from "@atoms/icons";
+import { Menu } from "@organisms/navigation";
+import { useState } from "react";
 
 export const Header: React.FC = () => {
+  const [open, setOpen] = useState<boolean>(false);
+
+  const handleOpenMenu = () => {
+    setOpen(true);
+  };
+
   return (
     <>
       <div className="bg-dark-500 shadow-md">
@@ -37,12 +45,18 @@ export const Header: React.FC = () => {
                   />
                 </Link>
               </li>
-              <li>
-                <Link to={"/"}>
-                  <div className="w-40 h-12 flex items-center justify-end">
-                    <HamburgerIcon />
+              <li className="relative">
+                {open && (
+                  <div className="fixed z-50">
+                    <Menu closeMenu={() => setOpen(false)} />
                   </div>
-                </Link>
+                )}
+                <div
+                  onClick={() => handleOpenMenu()}
+                  className="w-40 h-12 flex items-center justify-end hover:cursor-pointer"
+                >
+                  <HamburgerIcon />
+                </div>
               </li>
             </ul>
           </nav>
