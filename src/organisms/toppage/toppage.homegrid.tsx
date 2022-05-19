@@ -9,7 +9,11 @@ export const HomeGridPhoto: React.FC<HomeGridPhotoProps> = ({
       <div className="absolute z-10 font-inter text-15  text-white py-px pl-1 w-6/12 bg-primary-300">
         {message}
       </div>
-      <img src={img} alt="food-img" className="relative h-full w-full" />
+      <img
+        src={img}
+        alt="food-img"
+        className="relative h-full w-full object-cover"
+      />
     </div>
   );
 };

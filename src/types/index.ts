@@ -28,4 +28,11 @@ export type HomeGridPhotoProps = {
 export type NavMemoProps = {
   Icon: ReactElement;
   message: string;
+  hasNotification?: boolean;
+  count?: number;
+};
+
+export type DiaryProps = {
+  date: string;
+  message: string;
 };

@@ -29,7 +29,12 @@ export const Header: React.FC = () => {
               </li>
               <li>
                 <Link to={"/"}>
-                  <NavigationMemo Icon={<InfoIcon />} message={"お知らせ"} />
+                  <NavigationMemo
+                    Icon={<InfoIcon />}
+                    hasNotification={true}
+                    count={1}
+                    message={"お知らせ"}
+                  />
                 </Link>
               </li>
               <li>
