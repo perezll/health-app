@@ -36,3 +36,10 @@ export type DiaryProps = {
   date: string;
   message: string;
 };
+
+export type ArticleProps = {
+  img: string;
+  date: string;
+  primaryMessage: string;
+  secondaryMessage: string;
+};

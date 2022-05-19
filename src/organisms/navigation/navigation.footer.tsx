@@ -1,7 +1,4 @@
 import { Link, Outlet } from "react-router-dom";
-import { MainLogo } from "@atoms/logo";
-import { NavigationMemo } from "@molecules/navigation";
-import { HamburgerIcon } from "@atoms/icons";
 
 export const Footer: React.FC = () => {
   return (

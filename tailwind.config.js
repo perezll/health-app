@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     fontSize: {
       16: "16px",
-      15: "16px",
+      15: "15px",
       18: "18px",
       10: "10px",
       11: "11px",
@@ -32,6 +32,7 @@ module.exports = {
         234: "234px",
         "312px": "312px",
         "231px": "231px",
+        "224px": "224px",
       },
       width: {
         234: "234px",
