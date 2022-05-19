@@ -19,9 +19,12 @@
       "@types": ["src/types"],
       "@atoms/*": ["./src/atoms/*"],
       "@atoms": ["./src/atoms"],
-      "@organisms/*": ["./src/organisms/*"]
+      "@organisms/*": ["./src/organisms/*"],
+      "@molecules/*": ["./src/molecules/*"],
+      "@molecules": ["./src/molecules"],
+      "@assets/*": ["./src/assets/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.js"],
+  "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.tsx"],
   "exclude": ["node_modules"]
 }

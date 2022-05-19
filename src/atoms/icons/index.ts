@@ -6,3 +6,4 @@ export { XIcon } from "./icons.x";
 export { NotificationIcon } from "./icons.notification";
 export { HexagonMenuKnifeIcon } from "./icons.hexagonmenu-knife";
 export { HexagonMenuCupIcon } from "./icons.hexagonmenu-cup";
+export { BackOnTopIcon } from "./icons.backontop";

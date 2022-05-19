@@ -1,25 +1,48 @@
-import { Outlet } from "react-router-dom";
-import {
-  PaperIcon,
-  RibbonIcon,
-  InfoIcon,
-  HamburgerIcon,
-  XIcon,
-} from "@atoms/icons";
+import { Link, Outlet } from "react-router-dom";
 import { MainLogo } from "@atoms/logo";
-import { NavigationText } from "@atoms/navigation";
+import { NavigationMemo } from "@molecules/navigation";
+import { HamburgerIcon, PaperIcon, RibbonIcon, InfoIcon } from "@atoms/icons";
 
 export const Header: React.FC = () => {
   return (
     <>
-      <div>Header</div>
-      <MainLogo width={500} height={250} />
-      <PaperIcon />
-      <RibbonIcon />
-      <InfoIcon />
-      <HamburgerIcon />
-      <NavigationText message="自分の記録" />
-      <XIcon />
+      <div className="bg-dark-500 shadow-md">
+        <div className="h-64px  mx-40 relative flex items-center justify-between">
+          <Link to="/">
+            <MainLogo height={64} width={144} />
+          </Link>
+
+          <nav>
+            <ul className="inline-flex">
+              <li>
+                <Link to={"/myrecords"}>
+                  <NavigationMemo Icon={<PaperIcon />} message={"自分の記録"} />
+                </Link>
+              </li>
+              <li>
+                <Link to={"/"}>
+                  <NavigationMemo
+                    Icon={<RibbonIcon />}
+                    message={"チャレンジ"}
+                  />
+                </Link>
+              </li>
+              <li>
+                <Link to={"/"}>
+                  <NavigationMemo Icon={<InfoIcon />} message={"お知らせ"} />
+                </Link>
+              </li>
+              <li>
+                <Link to={"/"}>
+                  <div className="w-40 h-12 flex items-center justify-end">
+                    <HamburgerIcon />
+                  </div>
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
       <Outlet />
     </>
   );
