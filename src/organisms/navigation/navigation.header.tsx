@@ -45,15 +45,16 @@ export const Header: React.FC = () => {
                   />
                 </Link>
               </li>
+
               <li className="relative">
                 {open && (
-                  <div className="fixed z-50">
+                  <div className="fixed right-5 z-50">
                     <Menu closeMenu={() => setOpen(false)} />
                   </div>
                 )}
                 <div
                   onClick={() => handleOpenMenu()}
-                  className="w-40 h-12 flex items-center justify-end hover:cursor-pointer"
+                  className="absolute h-12 flex items-center justify-end hover:cursor-pointer"
                 >
                   <HamburgerIcon />
                 </div>

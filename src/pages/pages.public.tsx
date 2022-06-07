@@ -78,7 +78,7 @@ export const Public: React.FC = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 400) {
+      if (window.scrollY > 200) {
         setShowScroll(true);
       } else {
         setShowScroll(false);
